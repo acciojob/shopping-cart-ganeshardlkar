@@ -1,33 +1,21 @@
 //your code here
-let priceArray = [];
-let acc = 0;
+let item = document.getElementById('item-name-input');
+let price = document.getElementById('item-price-input');
+let add = document.getElementById('add');
+let table = document.getElementById('table');
 
-function addData() {
-    const price = document.getElementById('item-price-input').value;
-    console.log(price);
+function addElement() {
+    let row = document.createElement('tr');
+    let data1 = document.createElement('td');
+    let data2 = document.createElement('td');
+   data1 = item.value;
+   data2 = price.value;
+    row.append(data1);
+    row.append(data2);
+    table.append(row);
 
-    const productName = document.getElementById('item-name-input').value;
-    console.log(productName);
-    
-    priceArray.push(Number(price));
-    let total = priceArray.reduce(add, acc);
-
-    let priceChange = document.getElementById('price-change');
-    priceChange.innerHTML = total;
-
-    let tableRef = document.getElementById('add-rows');
-    let newRow = tableRef.insertRow(-1);
-    let newCellOne = newRow.insertCell(0);
-    let newCellTwo = newRow.insertCell(1);
-
-    let productNameText = document.createTextNode(productName);
-    let productPriceText = document.createTextNode(price);
-
-    newCellOne.appendChild(productNameText);
-    newCellTwo.appendChild(productPriceText);
-
+    console.log(data1);
+    console.log(data2);
 }
 
-function add(acc, a) {
-    return acc+a;
-}
+add.addEventListener('click', addElement);
